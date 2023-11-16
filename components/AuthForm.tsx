@@ -11,6 +11,7 @@ import { Input } from "@/components/ui/input"
 import { useCallback, useState } from "react"
 import AuthSocialButton from "./AuthSocialButton"
 import {BsGithub, BsGoogle} from 'react-icons/bs'
+import axios from "axios"
 
 type Variant = 'LOGIN' | 'REGISTER'
 
@@ -45,7 +46,7 @@ export default function AuthForm() {
         setIsLoading(true);
 
         if(variant === 'REGISTER'){
-            // axios register
+            axios.post('/api/register', data)
         }
 
         if(variant === 'LOGIN'){
@@ -71,7 +72,7 @@ export default function AuthForm() {
                                 <FormControl>
                                     <Input placeholder="e.g Mark Cillessen" {...field} />
                                 </FormControl>
-                                <FormDescription>Enter your name. It will be displayed publicly.</FormDescription>
+                                <FormDescription>Type your name. It will be displayed publicly.</FormDescription>
                                 <FormMessage />
                             </FormItem>
                             )} />
